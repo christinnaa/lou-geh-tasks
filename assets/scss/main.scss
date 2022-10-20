@@ -154,18 +154,22 @@ $disabled: #F5F5F5;
 
     &__container {
         // border: solid 1px pink;
+        // display: inline-block;
+    }
+
+    &__holder {
+        display: inline-block;
+        width: calc(100% / 4);
+        padding: 10px;
     }
 
     &__card {
         height: fit-content;
-        width: calc(90% / 4);
+        width: 100%;
         border-radius: 20px;
         box-shadow: 5px 5px 15px -5px #4f4f4f50;
         padding: 25px;
         background-color: white;
-        display: inline-block;
-        margin-right: 25px;
-        margin-bottom: 25px;
     }
 
     &__header {
@@ -211,4 +215,21 @@ $disabled: #F5F5F5;
             background-color: $common_H;
         }
     }
+}
+
+.notesCrit {
+    background-color: $crit;
+    color: white;
+}
+.notesSuccess {
+    background-color: $success;
+    color: white;
+}
+.notesCommon {
+    background-color: $common;
+    color: white;
+}
+.notesEdit {
+    background-color: $edit;
+    color: white;
 }
