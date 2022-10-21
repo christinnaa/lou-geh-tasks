@@ -1,7 +1,7 @@
 $main: #193C2A;
 $sub: #6D7571;
 $sub_H: #424242;
-$main: #363636;
+$main_H: #102e1f;
 $gray: #363636;
 $crit: #E84D2E;
 $crit_H: #C4462C;
@@ -15,6 +15,24 @@ $common: #5C7B7B;
 $common_H: #405353;
 $BG: #F8FFF6;
 $disabled: #F5F5F5;
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $success;
+}
 
 .login {
 
@@ -144,32 +162,58 @@ $disabled: #F5F5F5;
         // border: solid 1px red;
         width: 100%;
         height: calc(100vh - 60px);
-        background-color: $BG;
+        background-color: white;
         padding: 25px;
 
-        overflow-y: auto;
-        overflow-x: hidden;
 
     }
 
-    &__container {
-        // border: solid 1px pink;
-        // display: inline-block;
+    &__filter {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        // justify-content: flex-end;
+        justify-content: left;
+        border-bottom: 3px solid $success;
+        margin-bottom: 25px;
+    }
+
+    &__filterButton {
+        color: $sub;
+        outline: 0;
+        border: 0;
+        border-radius: 5px 5px 0 0;
+        padding: 5px 20px;
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+
+    &__scroller {
+        // border: solid 1px red;
+        height: calc(100vh - 147px);
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     &__holder {
         display: inline-block;
-        width: calc(100% / 4);
-        padding: 10px;
+        width: calc(100% / 5);
+        padding: 10px 15px;
+        position: relative;
     }
 
     &__card {
         height: fit-content;
+        background-color: #ffffff;
         width: 100%;
-        border-radius: 20px;
-        box-shadow: 5px 5px 15px -5px #4f4f4f50;
+        display: block;
         padding: 25px;
-        background-color: white;
+        // box-shadow: 0px 0px 15px -5px #4f4f4f50;
+        border: 1px solid #d4d4d4;
+        border-radius: 5px;
     }
 
     &__header {
@@ -215,21 +259,100 @@ $disabled: #F5F5F5;
             background-color: $common_H;
         }
     }
+
+    &__dropdown {
+        width: 150px;
+        height: fit-content;
+        border-radius: 10px;
+        background: white;
+        // border: 1px solid red;
+        position: absolute;
+        top: 185px;
+        right: 10px;
+        z-index: 1;
+        padding: 10px;
+        box-shadow: 5px 5px 15px -5px #4f4f4f50;
+        border-top: 3px solid $common;
+        border-bottom: 3px solid $common;
+        border-right: 1px solid $common;
+        border-left: 1px solid $common;
+
+    }
+
+    &__statuss {
+        // border: solid 1px red;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $common;
+            color: white;
+        }
+    }
 }
 
 .notesCrit {
     background-color: $crit;
     color: white;
+
+    &:hover {
+        background-color: $crit_H;
+        transition: 0.4s;
+    }
 }
+
 .notesSuccess {
     background-color: $success;
     color: white;
+
+    &:hover {
+        background-color: $success_H;
+        transition: 0.4s;
+    }
 }
+
 .notesCommon {
     background-color: $common;
     color: white;
+
+    &:hover {
+        background-color: $common_H;
+        transition: 0.4s;
+    }
 }
+
 .notesEdit {
     background-color: $edit;
+    color: white;
+
+    &:hover {
+        background-color: $edit_H;
+        transition: 0.4s;
+    }
+}
+
+.notesAll {
+    background-color: $main;
+    color: white;
+
+    &:hover {
+        background-color: $main_H;
+        transition: 0.4s;
+    }
+}
+
+.notesSub {
+    background-color: $sub;
+    color: white;
+
+    &:hover {
+        background-color: $sub_H;
+        transition: 0.4s;
+    }
+}
+
+.chosenTab {
+    background-color: $success;
     color: white;
 }
