@@ -39,6 +39,7 @@ $disabled: #F5F5F5;
 * {
     font-family: 'Poppins', sans-serif;
 }
+
 .login {
 
     &__layout {
@@ -168,8 +169,6 @@ $disabled: #F5F5F5;
         height: calc(100vh - 60px);
         background-color: white;
         padding: 25px;
-
-
     }
 
     &__filter {
@@ -177,7 +176,6 @@ $disabled: #F5F5F5;
         height: fit-content;
         display: flex;
         align-items: center;
-        // justify-content: flex-end;
         justify-content: left;
         border-bottom: 3px solid $success;
         margin-bottom: 25px;
@@ -200,29 +198,46 @@ $disabled: #F5F5F5;
         width: 50%;
     }
 
-    &__searchbar {
+    &__search-container {
         width: 50%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        margin-bottom: 5px;
     }
+
+    &__searchbar {
+        border: solid 1px $success;
+        display: flex;
+        height: 38px;
+        align-items: center;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    &__search-icon {
+        font-size: 18px;
+        padding-left: 10px;
+        color: $common;
+    }
+
 
     &__search-input {
         // border: solid 1px red;
         width: 50%;
         border-radius: 5px;
-        height: 34px;
+        height: 30px;
         width: 300px;
-        padding: 10px 15px;
+        padding: 10px 15px 10px 10px;
         border-radius: 5px;
-        margin-bottom: 5px;
         outline: 0;
-        border: solid 1px $success;
+        border: 0;
+        color: $main;
     }
 
     &__scroller {
         // border: solid 1px red;
-        height: calc(100vh - 155px);
+        height: calc(100vh - 160px);
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -299,7 +314,6 @@ $disabled: #F5F5F5;
         z-index: 1;
         padding: 10px 0px;
         box-shadow: 0px 0px 10px 0px #4f4f4f75
-
     }
 
     &__statuss {

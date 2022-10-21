@@ -20,8 +20,13 @@
         </button>
       </div>
 
-      <div class="note__searchbar">
-        <input type="text" placeholder="Search ..." class="note__search-input" v-model="find" @focus="chooseTab(1)">
+      <div class="note__search-container">
+        <div class="note__searchbar">
+          <div class="note__search-icon">
+            <font-awesome-icon icon="magnifying-glass" />
+          </div>
+          <input type="text" placeholder="Search ..." class="note__search-input" v-model="find" @focus="chooseTab(1)">
+        </div>
       </div>
 
     </div>
