@@ -2,22 +2,30 @@
   <div class="note__container">
 
     <div class="note__filter">
-      <button :class="`note__filterButton ${chosenTab == 1 ? 'chosenTab':''}`" @click="chooseTab(1)">
-        <font-awesome-icon icon="list" /> &nbsp; All Tasks
-      </button>
-      <button :class="`note__filterButton ${chosenTab == 2 ? 'chosenTab':''}`" @click="chooseTab(2)">
-        <font-awesome-icon icon="square" /> &nbsp; To Dos
-      </button>
-      <button :class="`note__filterButton ${chosenTab == 3 ? 'chosenTab':''}`" @click="chooseTab(3)">
-        <font-awesome-icon icon="bars-progress" /> &nbsp; In Progress
-      </button>
-      <button :class="`note__filterButton ${chosenTab == 4 ? 'chosenTab':''}`" @click="chooseTab(4)">
-        <font-awesome-icon icon="square-check" /> &nbsp; Done
-      </button>
-      <button :class="`note__filterButton ${chosenTab == 5 ? 'chosenTab':''}`" @click="chooseTab(5)">
-        <font-awesome-icon icon="ban" /> &nbsp; Cancelled
-      </button>
+      <div class="note__filterContainer">
+        <button :class="`note__filterButton ${chosenTab == 1 ? 'chosenTab':''}`" @click="chooseTab(1)">
+          <font-awesome-icon icon="list" /> &nbsp; All Tasks
+        </button>
+        <button :class="`note__filterButton ${chosenTab == 2 ? 'chosenTab':''}`" @click="chooseTab(2)">
+          <font-awesome-icon icon="square" /> &nbsp; To Dos
+        </button>
+        <button :class="`note__filterButton ${chosenTab == 3 ? 'chosenTab':''}`" @click="chooseTab(3)">
+          <font-awesome-icon icon="bars-progress" /> &nbsp; In Progress
+        </button>
+        <button :class="`note__filterButton ${chosenTab == 4 ? 'chosenTab':''}`" @click="chooseTab(4)">
+          <font-awesome-icon icon="square-check" /> &nbsp; Done
+        </button>
+        <button :class="`note__filterButton ${chosenTab == 5 ? 'chosenTab':''}`" @click="chooseTab(5)">
+          <font-awesome-icon icon="ban" /> &nbsp; Cancelled
+        </button>
+      </div>
+
+      <div class="note__searchbar">
+        <input type="text" placeholder="Search ..." class="note__search-input" v-model="find" @focus="chooseTab(1)">
+      </div>
+
     </div>
+
 
     <div class="note__scroller">
       <div class="note__holder" v-for="(data, n) in notes_list" :key="n + 'n'">
@@ -51,6 +59,7 @@ export default {
       notes: [],
       chosenTab: 1,
       tab_key: "",
+      find: "",
       noteStatus: [
         {
           id: 0,
@@ -148,7 +157,15 @@ export default {
     },
     notes_list() {
       return this.$store.getters.getNotes.filter(data => {
-        return (String(data.status).toLowerCase().includes(this.tab_key));
+        if (this.find != "") {
+          return (
+            String(data.title).toLowerCase().includes(this.find) ||
+            String(data.desc).toLowerCase().includes(this.find)
+          );
+        }
+        else {
+          return (String(data.status).toLowerCase().includes(this.tab_key));
+        }
       });
     },
     current_card() {
