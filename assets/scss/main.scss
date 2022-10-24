@@ -64,7 +64,7 @@ $disabled: #F5F5F5;
         width: 300px;
         padding: 10px 15px;
         border-radius: 5px;
-        border: solid 1px #767676;
+        border: solid 1px $main;
         outline: 0;
     }
 
@@ -275,6 +275,7 @@ $disabled: #F5F5F5;
         // border: solid 1px red;
         height: calc(100% - 80px);
         font-size: 12px;
+        text-align: justify;
     }
 
     &__footer {
